@@ -24,7 +24,7 @@
     <link href="../View/assets/vendor/animate.css/animate.min.css" rel="stylesheet">
     <link href="../View/assets/vendor/bootstrap/css/bootstrap.min.css" rel="stylesheet">
     <link href="../View/assets/vendor/bootstrap-icons/bootstrap-icons.css" rel="stylesheet">
-    <link href="../View/assets/vendor/boxicons/boxicons.min.css" rel="stylesheet">
+    <link href="../View/assets/vendor/boxicons/css/boxicons.min.css" rel="stylesheet">
     <link href="../View/assets/vendor/glightbox/css/glightbox.min.css" rel="stylesheet">
     <link href="../View/assets/vendor/swiper/swiper-bundle.min.css" rel="stylesheet">
 
