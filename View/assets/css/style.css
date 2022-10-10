@@ -223,14 +223,8 @@ h6 {
   transition: 0.3s;
 }
 
-.img-fluid{
-  max-width: 80px;
-  max-height: 80px;
-  
-}
-
 .navbar .dropdown ul li {
-  min-width: 200px;
+  min-width: 160px;
 }
 
 .navbar .dropdown ul a {
@@ -571,7 +565,7 @@ section {
 }
 
 .section-title h2 {
-  font-size: 32px;
+  font-size: 22px;
   font-weight: bold;
   text-transform: uppercase;
   margin-bottom: 20px;
@@ -1474,3 +1468,10 @@ section {
 #footer .credits {
   font-size: 13px;
 }
+
+/* ===LOGIN=== */
+
+.ftco-section {
+  padding: 7em 0; 
+}
+

@@ -10,7 +10,7 @@
     <meta content="" name="keywords">
 
     <!-- Favicons -->
-    <link href="../View/assets/img/logo01.png" rel="icon">
+    <link href="../View/assets/img/logo1.png" rel="icon">
     <link href="../View/assets/img/apple-touch-icon.png" rel="apple-touch-icon">
     <!-- <link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.7.0/css/all.css" integrity="sha384-lZN37f5QGtY3VHgisS14W3ExzMWZxybE1SJSEsQp9S+oqd12jhcu+A56Ebc1zFSJ" crossorigin="anonymous"> -->
 
@@ -63,14 +63,12 @@
         <div class="container d-flex align-items-center">
             <!-- <h1 class="logo me-auto"><a href="index.html">BỆNH VIỆN 175</a></h1> -->
             <!-- Uncomment below if you prefer to use an image logo -->
-            <a href="index.php" class="logo me-auto"><img src="../View/assets/img/logo.png" alt="" class="img-fluid">
+            <a href="index.php" class="logo me-auto"><img src="../View/assets/img/logo.png"  alt="" class="img-fluid">
                 <!-- <h6>Healthy Care</h6> -->
             </a>
-            <nav id="navbar" class="navbar navbar-expand-lg">
+            <nav id="navbar" class="navbar">
                 <ul>
-                    <li><a class="nav-link scrollto" href="index.php"></ion-icon>
-                            <ion-icon name="home-outline"></ion-icon>&ensp;Trang chủ
-                        </a></li>
+                    <li><a class="nav-link scrollto" href="index.php"><ion-icon name="home-outline"></ion-icon>&ensp;Trang chủ</a></li>
                     <li class="dropdown"><a href="#"><span>Giới thiệu</span> <i class="bi bi-chevron-down"></i></a>
                         <ul>
                             <li><a href="#">Về chúng tôi</a></li>
@@ -82,27 +80,14 @@
                             <li><a href="#">Tại sao chọn chúng tôi</a></li>
                         </ul>
                     </li>
-                    <li class="dropdown">
-                        <a href="#">
-                            <span>Dành cho khách hàng</span>
-                            <i class="bi bi-chevron-down"></i>
-                        </a>
+                    <li class="dropdown"><a href="#"><span>Dành cho người bệnh</span> <i class="bi bi-chevron-down"></i></a>
                         <ul>
-                            <?php
-                            if (isset($_SESSION['id'])):
-                            ?>
-                            <li><a href="index.php?act=registe-medical">Đăng ký khám bệnh</a></li>
-                            <li><a href="#">Kết quả xét nghiệm</a></li>
-                            <li><a href="index.php?act=result-medical">Kết quả khám bệnh</a></li>
-                            <?php
-                            else:
-                                echo "
-                                <li><a href='index.php?act=login'>Đăng ký khám bệnh</a></li>
-                                <li><a href='#'>Kết quả xét nghiệm</a></li>
-                                <li><a href='index.php?act=login'>Kết quả khám bệnh</a></li>
-                                ";
-                            endif;
-                            ?>
+                            <li><a href="#">Thông tin bảo hiểm y tế</a></li>
+                            <li><a href="#">Dịch vụ khám chữa bệnh</a></li>
+                            <li><a href="#">Thủ tục xuất viện</a></li>
+                            <li><a href="#">Quy trình khám bệnh</a></li>
+                            <li><a href="#">Các câu hỏi thường gặp</a></li>
+                            <li><a href="#">Dịch vụ dành cho thân nhân</a></li>
                         </ul>
                     </li>
                     <li><a class="nav-link scrollto" href="#">Chuyên khoa</a></li>
@@ -120,7 +105,7 @@
                             <li><a href="#">Hợp tác quốc tế</a></li>
                         </ul>
                     </li>
-                    <!-- <li class="dropdown"><a href="#"><span>Tin tức</span> <i class="bi bi-chevron-down"></i></a>
+                    <li class="dropdown"><a href="#"><span>Tin tức</span> <i class="bi bi-chevron-down"></i></a>
                         <ul>
                             <li><a href="#">Tin tuyển dụng</a></li>
                             <li class="dropdown">
@@ -138,28 +123,13 @@
                             </li>
                             <li><a href="#">Tin nội bộ</a></li>
                         </ul>
-                    </li> -->
-                    <?php
-                        if(isset($_SESSION['id'])):
-                    ?>
-                    <li class="nav-item me-3 me-lg-0 dropdown">
-                        <a class="nav-link dropdown-toggle" href="index.php?act=personal-information" id="navbarDropdown" role="button"
-                            data-mdb-toggle="dropdown" aria-expanded="false">
-                            <ion-icon class='logo' name="person-circle-outline"></ion-icon>
+                    </li>
+                    <li>
+                        <!-- <a class="getstarted scrollto" href="#about">BẮT ĐẦU</a> -->
+                        <a href="index.php?act=login">
+                            <ion-icon class="logo me-auto" name="log-in"></ion-icon>
+                            <!-- <iconify-icon icon="bx bxl-log-in"></iconify-icon> -->
                         </a>
-                        <ul class="dropdown-menu" aria-labelledby="navbarDropdown">
-                            <li><a class="dropdown-item" href="index.php?act=personal-information">My profile</a></li>
-                            <li><a class="dropdown-item" href="index.php?act=logout">Log out</a></li>
-                        </ul>
-                            <?php 
-                        else:
-                            echo"
-                            <li>
-                                <a href='index.php?act=login'>
-                                    <ion-icon class='logo' name='log-in-outline'></ion-icon>
-                                </a>";
-                            endif;
-                        ?>
                     </li>
                 </ul>
                 <i class="bi bi-list mobile-nav-toggle"></i>
