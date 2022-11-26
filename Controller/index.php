@@ -71,10 +71,10 @@ if (isset($_GET['act'])) {
                     # code...
                     echo header("refresh:0; url='../Controller/index.php?act=register'");
                     echo '<script>alert("Họ tên không hợp lệ");</script>';
-                } elseif (!preg_match("/^(?=.*[a-z])(?=.*\d)[a-zA-Z\d]{8,}$/", $pass)) {
+                } elseif (!preg_match("/^(?=.*[a-z])(?=.*)[a-zA-Z\d]{8,}$/", $pass)) {
                     # code...
                     echo header("refresh:0; url='../Controller/index.php?act=register'");
-                    echo '<script>alert("Mật khẩu tối thiểu 8 ký tự và ít nhất 1 số");</script>';
+                    echo '<script>alert("Mật khẩu tối thiểu 8 ký tự");</script>';
                 } elseif (!preg_match("/^(0[3|5|7|8|9][0-9]{8})$/", $sdt)) {
                     # code...
                     echo '<script>alert("Số điện thoại không chính xác!!");</script>';
@@ -131,7 +131,7 @@ if (isset($_GET['act'])) {
             if (isset($_POST['btnUpdate'])) {
                 // Đọc thông tin mới từ Form để update
                 $user_id = $_SESSION['id'];
-                echo $user_id;
+                // echo $user_id;
                 $new_address = $_POST['address'];
                 $new_email = $_POST['email'];
                 $new_phone = $_POST['tel'];
@@ -159,7 +159,7 @@ if (isset($_GET['act'])) {
                     echo header('refresh:0');
                     break;
                 }
-                if(!preg_match("/^[0-9\/]{1,}+,+[0-9A-Za-z.ÀÁÂÃÈÉÊÌÍÒÓÔÕÙÚĂĐĨŨƠàáâãèéêìíòóôõùúăđĩũơƯĂẠẢẤẦẨẪẬẮẰẲẴẶẸẺẼỀỀỂưăạảấầẩẫậắằẳẵặẹẻẽềềểỄỆỈỊỌỎỐỒỔỖỘỚỜỞỠỢỤỦỨỪễệỉịọỏốồổỗộớờởỡợụủứừỬỮỰỲỴÝỶỸửữựỳỵỷỹ\s,]{2,}$/",$new_address)){
+                if(!preg_match("/^[0-9\/]{1,}[0-9A-Za-z.ÀÁÂÃÈÉÊÌÍÒÓÔÕÙÚĂĐĨŨƠàáâãèéêìíòóôõùúăđĩũơƯĂẠẢẤẦẨẪẬẮẰẲẴẶẸẺẼỀỀỂưăạảấầẩẫậắằẳẵặẹẻẽềềểỄỆỈỊỌỎỐỒỔỖỘỚỜỞỠỢỤỦỨỪễệỉịọỏốồổỗộớờởỡợụủứừỬỮỰỲỴÝỶỸửữựỳỵỷỹ\s,]{2,}$/",$new_address)){
                     echo "<script>alert('Nhập sai địa chỉ')</script>";
                     echo header('refresh:0');
                     break;
@@ -175,6 +175,7 @@ if (isset($_GET['act'])) {
                     break;
                 }
                 $update_info = ['name' => $new_name, 'address' => $new_address, 'phone' => $new_phone, 'dob' => $new_date, 'email' => $new_email, 'cmnd' => $new_cmnd];
+                // print_r($update_info);
                 $result = update_user_by_id($update_info, $user_id);
                 if ($result) {
                     echo "<script>alert('Cập nhật thông tin thành công')</script>";
@@ -190,8 +191,16 @@ if (isset($_GET['act'])) {
         // For Customers:
         case 'registe-medical':
             $RegisteMedicalExamination = get_specialty();
-            if (isset($_POST['txtchuyenkhoa'])) {
-                $print = thongtin($_POST['txtchuyenkhoa']);
+            if (isset($_POST['btnAdd'])) {
+                $chuyenkhoa = get_one_specialty($_POST['txtchuyenkhoa'])['ChuyenKhoa'];
+                $doctor = get_one_doctor($_POST['txtbacsi'])['HoTen'];
+                $datetime = get_one_calendar($_POST['txtdatetime'])['DateTime'];
+                $user = $_SESSION['id'];
+                $note = $_POST['message'];
+                $result = add_calendar_medical($chuyenkhoa, $doctor, $datetime, $user, $note);
+                echo '<script>alert("Thêm thành công");</script>';
+                echo header('refresh:0; url ="index.php?act=registe-medical"');
+                // $print = thongtin($_POST['txtchuyenkhoa']);
             }
             include "../View/components/RegisteMedicalExamination.php";
             break;
@@ -200,6 +209,12 @@ if (isset($_GET['act'])) {
         case 'result-medical':
             $user = get_user_by_id($_SESSION['id']);
             include "../View/components/ResultMedicalExamination.php";
+            break;
+
+        case 'medical-ex-his':
+            $user = $_SESSION['id'];
+            $patient = get_calendar_patient($user);
+            include "../View/components/MedicalExaminationHistory.php";
             break;
 
         // Logout

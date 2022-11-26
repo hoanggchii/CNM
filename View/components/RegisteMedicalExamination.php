@@ -20,59 +20,88 @@
                         <div class="form-group col-md-6 mt-3 mt-md-0">
                             <label for="txtchuyenkhoa">Chọn chuyên khoa</label>
                             <!-- <input type="text" class="form-control" name="date" id="date" value="" required> -->
-                            <select name="txtchuyenkhoa" class="form-control col-md-7" id="mySelect" onchange="myFunction()">
-                                <option value="txtchuyenkhoa">---</option>
+                            <select name="txtchuyenkhoa" class="form-control col-md-7" id="txtchuyenkhoa" onchange="myFunction()">
+                                <option value="">---</option>
                                 <?php
-                                    
-                                    foreach($RegisteMedicalExamination as $chuyenkhoa) {
-                                        // array_unique($chuyenkhoa["ChuyenKhoa"]);
-                                        // echo "<option value='".$chuyenkhoa["ChuyenKhoa"]."'>".array_unique($chuyenkhoa["ChuyenKhoa"])."</option>";
-                                        echo "<option value='".$chuyenkhoa["ID_ChuyenKhoa"]."'>".$chuyenkhoa["ChuyenKhoa"]."</option>";
-                                    }
-                                    
+
+                                foreach ($RegisteMedicalExamination as $chuyenkhoa) {
+                                    echo "<option value='" . $chuyenkhoa["ID_ChuyenKhoa"] . "'>" . $chuyenkhoa["ChuyenKhoa"] . "</option>";
+                                }
                                 ?>
+
                             </select>
                         </div>
 
                         <div class="form-group col-md-6">
                             <label for="name">Chọn bác sĩ</label>
-                            <select name="txtbacsi" class="form-control col-md-7" onchange="myFunction1()">
-                                <option value="" id="demo">---</option>
-                                <?php
-                                // if(isset($_POST['txtcoso'])){
-                                //     foreach($_POST['txtcoso'] as $bacsi) {
-                                //     echo "<option value='".$bacsi["ChuyenKhoa"]."'>".$bacsi["HoTen"]."</option>";
-                                //     }
-                                // }
-                                ?>
+                            <select name="txtbacsi" class="form-control col-md-7" id="demo" onchange="myFunction1()">
+                                <option value="txtbacsi">---</option>
                                 <script>
-                                function myFunction() {
-                                var x = document.getElementById("mySelect").value;
-                                document.getElementById("demo").innerHTML = "" + x;
-                                }
-                            </script>
+                                    function myFunction() {
+                                        var id = $('#txtchuyenkhoa').val();
+                                        var data = 'id=' + id
+                                        $.ajax({
+                                            type: "POST",
+                                            url: "getListMajor.php",
+                                            beforeSend: function() {
+                                                $('#demo')
+                                                    .find('option')
+                                                    .remove()
+                                                    .end()
+                                            },
+                                            data: data,
+                                            success: function(response) {
+                                                var dataResponse = JSON.parse(response);
+                                                $.each(dataResponse, function(key, item) {
+                                                    $('#demo').append($('<option>', {
+                                                        value: item.id,
+                                                        text: item.nameDoctor
+                                                    }));
+                                                });
+                                            }
+                                        });
+                                    }
+                                </script>
                             </select>
                         </div>
-                        <div class="form-group col-md-6 mt-3 mt-md-0">
-                            <label for="tel">Chọn ngày khám</label>
-                            <input type="text" class="form-control" name="tel" id="tel" value="" required>
+                        <div class="form-group mt-3">
+                            <label for="datetime">Chọn ngày giờ khám</label>
+                            <select name="txtdatetime" class="form-control col-md-7" id="datetime">
+                                <option value="txtdatetime">---</option>
+                                <script>
+                                    function myFunction1() {
+                                        var id = $('#demo').val();
+                                        var data = 'id=' + id
+                                        $.ajax({
+                                            type: "POST",
+                                            url: "getListCalendar.php",
+                                            beforeSend: function() {
+                                                $('#datetime')
+                                                    .find('option')
+                                                    .remove()
+                                                    .end()
+                                            },
+                                            data: data,
+                                            success: function(response) {
+                                                var dataResponse = JSON.parse(response);
+                                                $.each(dataResponse, function(key, item) {
+                                                    $('#datetime').append($('<option>', {
+                                                        value: item.id,
+                                                        text: item.calendar
+                                                    }));
+                                                });
+                                            }
+                                        });
+                                    }
+                                </script>
+                            </select>
                         </div>
-
-                        <div class="form-group col-md-6">
-                            <label for="email">Chọn giờ khám</label>
-                            <input type="email" name="email" class="form-control" id="email" value="" required>
-                        </div>
-                        <!-- <div class="form-group col-md-6 mt-3 mt-md-0">
-                            <label for="cmnd">Vấn đề sức khỏe cần khám</label>
-                            <input type="text" class="form-control" name="cmnd" id="cmnd" value="" required>
-                        </div> -->
-                    </div>
                     <div class="form-group mt-3">
                         <label for="address">vấn đề sức khỏe cần khám</label>
-                        <input type="text" class="form-control" name="address" id="address" value="" required>
+                        <textarea class="form-control" name="message" rows="3"></textarea>
                     </div>
                     <div class="text-center">
-                        <input type="submit" value="Cập nhật" name="btnUpdate" class="btn btn-success">
+                        <input type="submit" value="Cập nhật" name="btnAdd" class="btn btn-success">
                     </div>
                 </form>
             </div>

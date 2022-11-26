@@ -1,7 +1,7 @@
   <!-- ======= Footer ======= -->
   <footer id="footer">
       <div class="container">
-          <h3>Green</h3>
+          <h3>Healthy Care Clinic</h3>
           <p>Et aut eum quis fuga eos sunt ipsa nihil. Labore corporis magni eligendi fuga maxime saepe commodi placeat.
           </p>
           <div class="social-links">
@@ -38,6 +38,7 @@
   <!-- Icon -->
   <script type="module" src="https://unpkg.com/ionicons@5.5.2/dist/ionicons/ionicons.esm.js"></script>
   <script type="nomodule" src="https: // unkg .com / ionicons @ 5.5.2 / dist / ionicons / ionicons.js "> </script>
+  <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.6.0/jquery.min.js"></script>
   </body>
 
   </html>

@@ -89,17 +89,19 @@
                         </a>
                         <ul>
                             <?php
-                            if (isset($_SESSION['id'])):
+                            if (isset($_SESSION['id']) && get_user_by_id($_SESSION['id'])['Role'] == 0):
                             ?>
                             <li><a href="index.php?act=registe-medical">Đăng ký khám bệnh</a></li>
                             <li><a href="#">Kết quả xét nghiệm</a></li>
                             <li><a href="index.php?act=result-medical">Kết quả khám bệnh</a></li>
+                            <li><a href="index.php?act=medical-ex-his">Lịch sử đăng ký khám bệnh</a></li>
                             <?php
                             else:
                                 echo "
                                 <li><a href='index.php?act=login'>Đăng ký khám bệnh</a></li>
                                 <li><a href='#'>Kết quả xét nghiệm</a></li>
                                 <li><a href='index.php?act=login'>Kết quả khám bệnh</a></li>
+                                <li><a href='index.php?act=login'>Lịch sử đăng ký khám bệnh</a></li>
                                 ";
                             endif;
                             ?>
@@ -140,18 +142,18 @@
                         </ul>
                     </li> -->
                     <?php
-                        if(isset($_SESSION['id'])):
+                        if(isset($_SESSION['id']) && get_user_by_id($_SESSION['id'])['Role'] == 0):
                     ?>
                     <li class="nav-item me-3 me-lg-0 dropdown">
-                        <a class="nav-link dropdown-toggle" href="index.php?act=personal-information" id="navbarDropdown" role="button"
-                            data-mdb-toggle="dropdown" aria-expanded="false">
+                        <a class="nav-link dropdown-toggle" href="index.php?act=personal-information"
+                            id="navbarDropdown" role="button" data-mdb-toggle="dropdown" aria-expanded="false">
                             <ion-icon class='logo' name="person-circle-outline"></ion-icon>
                         </a>
                         <ul class="dropdown-menu" aria-labelledby="navbarDropdown">
                             <li><a class="dropdown-item" href="index.php?act=personal-information">My profile</a></li>
                             <li><a class="dropdown-item" href="index.php?act=logout">Log out</a></li>
                         </ul>
-                            <?php 
+                        <?php 
                         else:
                             echo"
                             <li>

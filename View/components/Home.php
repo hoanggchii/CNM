@@ -10,8 +10,11 @@
         <div class="carousel-item active" style="background-image: url(../View/assets/img/slide/slide-1.jpg)">
           <div class="carousel-container">
             <div class="container">
-              <h2 class="animate__animated animate__fadeInDown">VỀ CHÚNG TÔI </h2>
-              <p class="animate__animated animate__fadeInUp">Bệnh viện Quân Y 175 trực thuộc Bộ Quốc phòng Việt Nam là bệnh viện tuyến cuối của quân đội ở khu vực phía nam, có nhiệm vụ khám chữa bệnh cho cán bộ cấp cao trong quân đội, cán bộ cấp cao Đảng - Nhà nước, và các đối tượng khác. Làm tròn nhiệm vụ của bộ quốc phòng và nhân dân Việt Nam giao phó, Bệnh viện Quân y 175 không chỉ là đơn vị y tế chuyên sâu giữ gìn sức khoẻ cho các chiến sĩ bảo vệ biển đảo Tổ Quốc mà còn là bệnh viện đa khoa hàng đầu dành cho nhân dân Miền Nam Việt Nam.</p>
+              <h2 class="animate__animated animate__fadeInDown">Tầm nhìn</h2>
+              <p class="animate__animated animate__fadeInUp">"Chúng tôi thường xuyên cập nhật kiến thức và kỹ thuật y học tiên tiến, thông qua việc hợp tác chuyên môn với các bệnh viện danh tiếng trong và ngoài nước.
+                <br> Chúng tôi phấn đấu trở thành một trong những bệnh viện đi đầu về các hoạt động y tế hướng về cộng đồng.
+                <br>Tập thể y bác sĩ tại bệnh viện sẽ xây dựng nên một bản sắc văn hoá riêng, trở thành một ngôi nhà y khoa - nơi mà toàn thể nhân viên đồng lòng xây dựng, cống hiến và tự hào về môi trường làm việc hiện đại, chuyên nghiệp và đoàn kết."
+              </p>
               <a href="#about" class="btn-get-started animate__animated animate__fadeInUp scrollto">Read More</a>
             </div>
           </div>
@@ -21,10 +24,8 @@
         <div class="carousel-item" style="background-image: url(../View/assets/img/slide/slide-2.jpg)">
           <div class="carousel-container">
             <div class="container">
-              <h2 class="animate__animated animate__fadeInDown">Tầm nhìn sứ mệnh</h2>
-              <p class="animate__animated animate__fadeInUp">“Sáng về y đức, sâu về y lý, giỏi về y thuật, vững về y nghiệp”
-                Với khát vọng mang đến dịch vụ y tế chất lượng cao cùng cơ sở vật chất hàng đầu cho người dân Việt Nam, Bệnh viện quân y 175 đã và đang nỗ lực phấn đấu trở thành bệnh viện đa khoa tuyến cuối chuyên sâu, nhằm đáp ứng tốt nhu cầu khám chữa bệnh cho mọi đối tượng với kỹ thuật tiên tiến và dịch vụ chăm sóc hiện đại.  
-              </p>
+              <h2 class="animate__animated animate__fadeInDown">Sứ mệnh</h2>
+              <p class="animate__animated animate__fadeInUp">"Bệnh viện chúng tôi lấy bệnh nhân làm trung tâm cho mọi hoạt động, chúng tôi cam kết nâng cao chất lượng cuộc sống thông qua việc chăm sóc sức khoẻ toàn diện. Bệnh viện hướng đến việc xây dựng hình ảnh một cơ sở y tế thân thiện, gần gũi, giúp quý vị cảm thấy yên tâm như chính ngôi nhà của mình."</p>
               <a href="#about" class="btn-get-started animate__animated animate__fadeInUp scrollto">Read More</a>
             </div>
           </div>
@@ -37,13 +38,13 @@
               <h2 class="animate__animated animate__fadeInDown">Giá trị cốt lõi</h2>
               <p class="animate__animated animate__fadeInUp">“Nỗ lực – Tận tâm – Tự trọng”
                 Nỗ lực
-                Với tinh thần nỗ lực không ngừng, không chịu khuất phục trước khó khăn và áp lực, những lương y khoác áo lính luôn cống hiến hết mình vì sự nghiệp giữ gìn truyền thống lâu đời của của Bệnh viện Quân y 175, đồng thời, phấn đấu vì sự tin yêu của quân và dân khu vực Miền Nam.
+                Với tinh thần nỗ lực không ngừng, không chịu khuất phục trước khó khăn và áp lực, những lương y khoác áo lính luôn cống hiến hết mình vì sự nghiệp giữ gìn truyền thống lâu đời của của phòng khám, đồng thời, phấn đấu vì sự tin yêu của quân và dân khu vực Miền Nam.
                 
                 Tận tâm
-                Lấy chữ “tâm” làm nền tảng, các y bác sĩ Bệnh viện Quân y 175 luôn làm việc và nghiên cứu dưới tinh thần nghiêm túc và khắt khe, coi trọng tính mạng và sức khoẻ của mỗi bệnh nhân như của chính mình.
+                Lấy chữ “tâm” làm nền tảng, các y bác sĩ phòng khám luôn làm việc và nghiên cứu dưới tinh thần nghiêm túc và khắt khe, coi trọng tính mạng và sức khoẻ của mỗi bệnh nhân như của chính mình.
                 
                 Tự trọng
-                Giữ gìn màu xanh trong trắng của người lính cụ Hồ, các y bác sĩ và cán bộ Bệnh viện Quân y 175 luôn làm việc chuẩn chỉ, đúng với cái tâm của người lương y và đúng với kỷ luật nghiêm ngặt của người lính.</p>
+                Giữ gìn màu xanh trong trắng của người lính cụ Hồ, các y bác sĩ và cán bộ phòng khám luôn làm việc chuẩn chỉ, đúng với cái tâm của người lương y và đúng với kỷ luật nghiêm ngặt của người lính.</p>
               <a href="#about" class="btn-get-started animate__animated animate__fadeInUp scrollto">Read More</a>
             </div>
           </div>

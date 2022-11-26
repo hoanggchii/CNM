@@ -37,7 +37,7 @@ function update_user_by_id($update_info, $user_id) {
     $email = $update_info['email'];
     $name = $update_info['name'];
     $dob = $update_info['dob'];
-    $cmnd = $update_info['cmnd'];
+    $cmnd = $update_info['cmnd'];   
     $sql = "UPDATE taikhoan SET DiaChi = '$address', SDT = '$phone', HoTen = '$name', NgaySinh = '$dob', Email = '$email', CMND = '$cmnd' WHERE MaTaiKhoan = $user_id";
     execsql($sql, 1);
     return true;
@@ -49,3 +49,12 @@ function add_medical_examination($specialty, $doctor, $date, $time, $user_id){
     return addsql($sql);
 }
 
+function get_user(){
+    $sql = "SELECT * FROM taikhoan";
+    return getlist($sql);
+}
+
+function check_username($user_name){
+    $sql = "SELECT * FROM taikhoan WHERE HoTen = '$user_name'";
+    return getone($sql);
+}
