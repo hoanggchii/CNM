@@ -26,3 +26,8 @@ function add_patient($user_name, $birthday, $phone, $email, $cmnd, $address, $ro
     return addsql($sql);
 }
 
+function get_list_medical_record(){
+    $sql = "SELECT * FROM taikhoan JOIN hosobenhnhan ON taikhoan.MaTaiKhoan = hosobenhnhan.MaTaiKhoan";
+    return getlist($sql);
+}
+

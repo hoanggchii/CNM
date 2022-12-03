@@ -125,7 +125,7 @@
                 <div id="collapseFour" class="collapse" aria-labelledby="headingTwo" data-parent="#accordionSidebar">
                     <div class="bg-white py-2 collapse-inner rounded">
                         <a class="collapse-item" href="index.php?act=list-medical-record">Danh sách bệnh án</a>
-                        <a class="collapse-item" href="#">Thêm bệnh án</a>
+                        <a class="collapse-item" href="index.php?act=medical-history">Lịch sử khám bệnh</a>
                         <a class="collapse-item" href="#">Cập nhật bệnh án</a>
                         <a class="collapse-item" href="#">Xóa bệnh án</a>
                     </div>

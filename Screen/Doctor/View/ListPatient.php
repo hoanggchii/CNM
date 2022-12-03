@@ -19,7 +19,7 @@
             <th scope="col">Email</th>
             <th scope="col">CMND</th>
             <th scope="col">Địa chỉ</th>
-            <th scope="col" class="text-center">Xem bệnh án</th>
+            <th scope="col" class="text-center">Thêm bệnh án</th>
             <th scope="col" class="text-center">Sửa</th>
           </tr>
         </thead>
@@ -37,7 +37,7 @@
                       <td scope='row'>" . $abc['Email'] . "</td>
                       <td scope='row'>" . $abc['CMND'] . "</td>
                       <td scope='row'>" . $abc['DiaChi'] . "</td>
-                      <td class='text-center'><a href='index.php?act=medical-record&id=".$abc['MaTaiKhoan']."'><i class='fa fa-eye text-dark'></i></a></td>
+                      <td class='text-center'><a href='index.php?act=add-medical-record&id=".$abc['MaTaiKhoan']."'><i class='fas fa-duotone fa-pen'></i></a></td>
                       <td class='col-1 text-center'><a href='index.php?act=update-patient&id=".$abc['MaTaiKhoan']."'><i class='fas fa-pen-square text-success'></i></a></td>";
             echo "</tr>
                   </tbody>";

@@ -7,7 +7,7 @@ $data = array();
 
 
 // $query = "SELECT * FROM `lich` WHERE ID_BacSi = (SELECT ID_BacSi FROM thongtinbacsi WHERE MaTaiKhoan = $id ORDER BY id )";
-$query = " SELECT * FROM lich where ID_BacSi = 1";
+$query = " SELECT * FROM lichkham where BacSi = 'Trần Phương Thanh'";
 
 $statement = $connect->prepare($query);
 
@@ -19,9 +19,9 @@ $result = $statement->fetchAll();
 foreach($result as $row)
 {
  $data[] = array(
-    'id'   => $row["id"],
-    'title'   => $row["GhiChu"],
-    'date'   => $row["DateTime"]
+    'id'   => $row["ID_LichKham"],
+    'title'   => $row["VanDeSK"],
+    'date'   => $row["ThoiGian"]
 //     'ID_lich'   => $row["ID_Lich"],
 //   'DateTime'   => $row["DateTime"],
 //   'GhiChu'   => $row["GhiChu"],
