@@ -184,7 +184,7 @@
     }
 </style>
 
-<body onload="window.print();">
+<body>
     <div id="page" class="page">
         <div class="header">
             <!-- <div class="logo"><img src="../../View/assets/img/logo01.png"></div> -->
@@ -193,7 +193,7 @@
         </div>
         <br />
         <div class="title">
-            ĐƠN THUỐC
+            KẾT QUẢ KHÁM BỆNH
             <br />
             -------oOo-------
         </div>
@@ -247,19 +247,6 @@
             }
             ?>
         </table>
-        <div>
-            <b>Chẩn đoán hình ảnh:</b>
-            <br>
-            <?php
-            if (isset($imgList)) {
-                foreach ($imgList as $img) {
-            ?>
-                    <img src="<?= $img['Img'] ?>" title="<?= $img['Name'] ?>" width="200" height="200">
-            <?php
-                }
-            }
-            ?>
-        </div>
         <div class="footer-left"><br />
             Khách hàng </div>
         <?php
@@ -267,9 +254,9 @@
         // echo $getdate;
 
         echo '<div class="footer-right"> TP.HCM, ngày ' . $getdate['mday'] . ' tháng ' . $getdate['mon'] . ' năm ' . $getdate['year'] . '<br />
-                Nhân viên 
+                Bác sĩ 
                 <br><br><br><br>';
-        $get_doctor = get_doctor($_SESSION['id'])['HoTen'];
+        $get_doctor = $username_doctor['BacSi'];
         echo $get_doctor . '</div>';
         ?>
     </div>

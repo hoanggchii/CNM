@@ -6,4 +6,5 @@
     include "components/Calendar.php";
     include "components/MedicalRecord.php";
     include "components/Prescriptions.php";
+    include "components/Test.php";
 ?>

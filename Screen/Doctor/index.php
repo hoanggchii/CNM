@@ -9,6 +9,12 @@ if (isset($_SESSION['doctor'])) {
     if (isset($_GET['act'])) {
         $act = $_GET["act"];
         switch ($act) {
+            case 'check-medical-record':
+                $id_request = $_GET['id_lich'];
+                $update = update_calendal($id_request);
+                echo '<script>alert("Xác nhận bệnh nhân đến khám bệnh thành công");</script>';
+                echo header("refresh:0; url='../Doctor/index.php?act=list-patient'");
+                break;
             case 'list-medical-record':
                 $medicalRecord = get_list_medical_record();
                 // print_r($medicalRecord);
@@ -74,21 +80,17 @@ if (isset($_SESSION['doctor'])) {
                         echo '<script>alert("Thêm thành công");</script>';
                         echo header("refresh:0; url='../Doctor/index.php?act=registe-calendar'");
                     }
-
-                    // echo date('H:i', strtotime($TimeEnd) - strtotime($datetime));
-
-                    // echo date('H:i', strtotime($TimeEnd-$datetime));
-                    // $cenvertedTime =     
-                    // echo '<br>';
-                    // echo $cenvertedTime;
-
-                    // db
                 }
                 include "./View/RegisteCalendar.php";
                 break;
                 // list patient: dnah sách bệnh nhân
             case 'list-patient':
-                $patient = get_list_patient();
+                $idRequest = $_SESSION['doctor'];
+                // echo $idRequest;
+                $doctor_name = finduser($idRequest)['HoTen'];
+                // echo $doctor_name;
+                $patient = get_list_patient($doctor_name);
+                $medical = get_patient_by_medical_record($doctor_name);
                 // print_r($patient);
                 // $medical_record = get_medical_record($id);
                 include "./View/ListPatient.php";
@@ -154,20 +156,33 @@ if (isset($_SESSION['doctor'])) {
 
                 // add-medical-record
             case 'add-medical-record':
-                if (isset($_POST["btnAdd"]) && $_POST["btnAdd"]) {
-                    $idRequest = $_GET['id'];
-                    $result = $_POST["result"];
-                    $conclusions = $_POST["conclusions"];
-                    $note = $_POST["note"];
+                $get_id = $_GET['id_lich'];
+                if (isset(get_medical_record_by_calendar($get_id)['ID_LichKham'])) {
+                    echo '<script>alert("Bệnh nhân này đã được thêm bệnh án");</script>';
+                    echo header('refresh:0; url ="index.php?act=list-patient"');
+                } else {
+                    if (isset($_POST["btnAdd"]) && $_POST["btnAdd"]) {
+                        $idRequest = $_GET['id_lich'];
+                        $id = $_GET['id'];
+                        // echo $idRequest;
+                        $result = $_POST["result"];
+                        $conclusions = $_POST["conclusions"];
+                        $note = $_POST["note"];
 
-                    $add_medical_record = add_medical_record($result, $conclusions, $note, $idRequest);
-                    echo header("refresh:0; url='../Doctor/index.php?act=list-patient'");
-                    echo '<script>alert("Thêm bệnh án thành công");</script>';
+                        $add_medical_record = add_medical_record($result, $conclusions, $note, $idRequest, $id);
+                        echo header("refresh:0; url='../Doctor/index.php?act=list-patient'");
+                        echo '<script>alert("Thêm bệnh án thành công");</script>';
+                    }
+                    include './View/AddMedicalRecord.php';
                 }
                 // echo $idRequest;
-
-                include './View/AddMedicalRecord.php';
                 break;
+                // case 'see-medical-record':
+                //     $idRequest = $_GET['id'];
+                //     $print_prescript = print_prescript($idRequest);
+                //     $user = get_users_by_medical_record($idRequest);
+                //     include './View/SeeMedicalRecord.php';
+                //     break;
             case 'add-prescriptions':
                 $idRequest = $_GET['id'];
                 $get_prescript_patient = get_prescript_patient($_GET['id']);
@@ -187,21 +202,66 @@ if (isset($_SESSION['doctor'])) {
                     $dang = $_POST['dang'];
                     $dinner = $soluongt . ' ' . $dang;
                     $check = check_prescript($drugname, $maHoSo);
-                    if ($drugname == $check['TenThuoc']) {
+                    if (isset($check['TenThuoc'])) {
 
                         echo '<script>alert("Thuốc này bạn đã thêm trước đó");</script>';
                     } else {
                         $add_prescriptions = addPrescriptions($drugname, $amount, $DVT, $shining, $lunch, $dinner, $maHoSo);
-                        // echo header("refresh:0; url='../Doctor/index.php?act=list-patient'");
+                        echo header("refresh:0; url='../Doctor/index.php?act=add-prescriptions&id=$maHoSo'");
                         echo '<script>alert("Thêm thuốc thành công");</script>';
                     }
                 }
                 include './View/AddPrescriptions.php';
                 break;
+                // case 'confirm-calendar':
+                //     include './View/ConfirmCalendar.php';
+                //     break;
+            case 'create-test-sheet':
+                if (isset($_POST['btnAdd']) && $_POST['btnAdd']) {
+                    $maHoSo = $_GET['id'];
+                    # code...
+                    $countfiles = count($_FILES['files']['name']);
+                    // Prepared statement
+                    // $query = "INSERT INTO `xetnghiem`(`Name`, `Img`, `MaHoSo`) VALUES (?,?,$maHoSo)";
+
+                    // $statement = $conn->prepare($query);
+                    for ($i = 0; $i < $countfiles; $i++) {
+                        // File name
+                        $filename = $_FILES['files']['name'][$i];
+
+                        // Location
+                        $target_file = 'img/' . $filename;
+                        // file extension
+                        $file_extension = pathinfo($target_file, PATHINFO_EXTENSION);
+                        $file_extension = strtolower($file_extension);
+
+                        // Valid image extension
+                        $valid_extension = array("png", "jpeg", "jpg");
+
+                        if (in_array($file_extension, $valid_extension)) {
+
+                            // Upload file
+                            if (move_uploaded_file($_FILES['files']['tmp_name'][$i], $target_file)) {
+
+                                // Execute query
+                                // $statement->execute(array($filename, $target_file));
+                                $statement = add_test($filename, $target_file, $maHoSo);
+                                echo header("refresh:0; url='../Doctor/index.php?act=list-medical-record'");
+                                echo '<script>alert("Thêm xét nghiệm thành công");</script>';
+                            }
+                        } else {
+                            echo header("refresh:0; url='../Doctor/index.php?act=create-test-sheet&id=$maHoSo'");
+                            echo '<script>alert("Dữ liệu vào phải là hình ảnh");</script>';
+                        }
+                    }
+                }
+                include './View/CreateTestSheets.php';
+                break;
             case 'print-medical-records':
                 $idRequest = $_GET['id'];
                 $print_prescript = print_prescript($idRequest);
                 $user = get_users_by_medical_record($idRequest);
+                $imgList = print_img($idRequest);
                 include './View/PrintMedicalRecords.php';
                 break;
                 // profile

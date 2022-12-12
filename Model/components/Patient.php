@@ -3,8 +3,13 @@ function get_patient($id_user){
     $sql = "SELECT * FROM hosobenhnhan WHERE MaTaiKhoan = $id_user";
     return getone($sql);
 }
-function get_list_patient(){
-    $sql = "SELECT * FROM `taikhoan` WHERE role = 0;";
+function get_list_patient($doctor_name){
+    $sql = "SELECT * FROM `lichkham` JOIN `taikhoan` ON lichkham.MaTaiKhoan = taikhoan.MaTaiKhoan WHERE lichkham.BacSi = '$doctor_name'";
+    return getlist($sql);
+}
+
+function get_patient_by_medical_record($doctor_name){
+    $sql = "SELECT * FROM `lichkham` JOIN `taikhoan` ON lichkham.MaTaiKhoan = taikhoan.MaTaiKhoan JOIN `hosobenhnhan`ON hosobenhnhan.ID_LichKham = lichkham.ID_LichKham WHERE lichkham.BacSi = '$doctor_name';";
     return getlist($sql);
 }
 

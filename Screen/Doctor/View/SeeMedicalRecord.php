@@ -184,7 +184,7 @@
     }
 </style>
 
-<body onload="window.print();">
+<body>
     <div id="page" class="page">
         <div class="header">
             <!-- <div class="logo"><img src="../../View/assets/img/logo01.png"></div> -->
@@ -193,7 +193,7 @@
         </div>
         <br />
         <div class="title">
-            ĐƠN THUỐC
+            XEM BỆNH ÁN
             <br />
             -------oOo-------
         </div>
@@ -227,18 +227,18 @@
             <?php
             if (isset($print_prescript)) {
                 $i = 0;
-                foreach ($print_prescript as $prescript) {
+                foreach($print_prescript as $prescript){
                     $i++;
                     echo '
                     <tbody>
                     <tr>
-                        <th scope="row">' . $i . '</th>
-                        <td>' . $prescript['TenThuoc'] . '</td>
-                        <td>' . $prescript['SoLuong'] . '</td>
-                        <td>' . $prescript['DonVi'] . '</td>
-                        <td>' . $prescript['Sang'] . '</td>
-                        <td>' . $prescript['Trua'] . '</td>
-                        <td>' . $prescript['Toi'] . '</td>
+                        <th scope="row">'.$i.'</th>
+                        <td>'.$prescript['TenThuoc'].'</td>
+                        <td>'.$prescript['SoLuong'].'</td>
+                        <td>'.$prescript['DonVi'].'</td>
+                        <td>'.$prescript['Sang'].'</td>
+                        <td>'.$prescript['Trua'].'</td>
+                        <td>'.$prescript['Toi'].'</td>
                     </tr>
                 </tbody>
                     
@@ -247,30 +247,6 @@
             }
             ?>
         </table>
-        <div>
-            <b>Chẩn đoán hình ảnh:</b>
-            <br>
-            <?php
-            if (isset($imgList)) {
-                foreach ($imgList as $img) {
-            ?>
-                    <img src="<?= $img['Img'] ?>" title="<?= $img['Name'] ?>" width="200" height="200">
-            <?php
-                }
-            }
-            ?>
-        </div>
-        <div class="footer-left"><br />
-            Khách hàng </div>
-        <?php
-        $getdate = getdate();
-        // echo $getdate;
-
-        echo '<div class="footer-right"> TP.HCM, ngày ' . $getdate['mday'] . ' tháng ' . $getdate['mon'] . ' năm ' . $getdate['year'] . '<br />
-                Nhân viên 
-                <br><br><br><br>';
-        $get_doctor = get_doctor($_SESSION['id'])['HoTen'];
-        echo $get_doctor . '</div>';
-        ?>
+        
     </div>
 </body>

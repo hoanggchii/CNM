@@ -32,3 +32,18 @@ function get_calendar_patient($id_patient){
     $sql = "SELECT * FROM `lichkham` WHERE MaTaiKhoan = $id_patient";
     return getlist($sql);
 }
+
+function get_medical_exam($user_id){
+    $sql = "SELECT * FROM `lichkham` JOIN `hosobenhnhan` ON lichkham.ID_LichKham = hosobenhnhan.ID_LichKham WHERE lichkham.MaTaiKhoan = $user_id";
+    return getlist($sql);
+}
+
+function get_by_calendar($id_calendar){
+    $sql = "SELECT * FROM `lichkham` WHERE ID_LichKham = $id_calendar";
+    return getone($sql);
+}
+
+function update_calendal($id_calendar){
+    $sql = "UPDATE `lichkham` SET `GhiChu`='Xác nhận' WHERE ID_LichKham = $id_calendar";
+    return execsql($sql, 0);
+}

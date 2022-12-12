@@ -6,7 +6,7 @@ function get_doctor($id_user){
 }
 function get_specialty()
 {
-    $query = "SELECT * FROM ChuyenKhoa";
+    $query = "SELECT * FROM chuyenkhoa";
     return getlist($query);
 }
 function thongtin($chuyenkhoa)
@@ -17,7 +17,7 @@ function thongtin($chuyenkhoa)
 
 function get_one_specialty($specialty)
 {
-    $query = "SELECT * FROM ChuyenKhoa WHERE ID_ChuyenKhoa = $specialty";
+    $query = "SELECT * FROM chuyenkhoa WHERE ID_ChuyenKhoa = $specialty";
     return getone($query);
 }
 
@@ -25,3 +25,5 @@ function get_one_doctor($id_doctor){
     $query = "SELECT * FROM taikhoan JOIN thongtinbacsi on taikhoan.MaTaiKhoan = thongtinbacsi.MaTaiKhoan where thongtinbacsi.ID_BacSi = $id_doctor";
     return getone($query);
 }
+
+

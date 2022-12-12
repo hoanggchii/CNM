@@ -19,6 +19,7 @@
             <th scope="col">Email</th>
             <th scope="col">CMND</th>
             <th scope="col">Địa chỉ</th>
+            <th scope="col">Thời gian khám</th>
             <th scope="col" class="text-center">Thêm bệnh án</th>
             <th scope="col" class="text-center">Sửa</th>
           </tr>
@@ -37,7 +38,15 @@
                       <td scope='row'>" . $abc['Email'] . "</td>
                       <td scope='row'>" . $abc['CMND'] . "</td>
                       <td scope='row'>" . $abc['DiaChi'] . "</td>
-                      <td class='text-center'><a href='index.php?act=add-medical-record&id=".$abc['MaTaiKhoan']."'><i class='fas fa-duotone fa-pen'></i></a></td>
+                      <td scope='row'>" . $abc['ThoiGian'] . "</td>";
+                      if($abc['GhiChu'] == NULL){
+                        echo"
+                        <td class='text-center'><a href='index.php?act=check-medical-record&id_lich=".$abc['ID_LichKham']."'><i class='fas fa-danger fa-check'></i></a></td>";
+                      }else {
+                        echo"
+                        <td class='text-center'><a href='index.php?act=add-medical-record&id_lich=".$abc['ID_LichKham']."&id=".$abc['MaTaiKhoan']."'><i class='fas fa-duotone fa-pen'></i></a></td>";
+                      }
+                      echo"
                       <td class='col-1 text-center'><a href='index.php?act=update-patient&id=".$abc['MaTaiKhoan']."'><i class='fas fa-pen-square text-success'></i></a></td>";
             echo "</tr>
                   </tbody>";

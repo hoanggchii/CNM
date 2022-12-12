@@ -16,9 +16,7 @@
 
     <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/font-awesome/4.7.0/css/font-awesome.min.css">
     <!-- Google Fonts -->
-    <link
-        href="https://fonts.googleapis.com/css?family=Open+Sans:300,300i,400,400i,600,600i,700,700i|Raleway:300,300i,400,400i,500,500i,600,600i,700,700i|Poppins:300,300i,400,400i,500,500i,600,600i,700,700i"
-        rel="stylesheet">
+    <link href="https://fonts.googleapis.com/css?family=Open+Sans:300,300i,400,400i,600,600i,700,700i|Raleway:300,300i,400,400i,500,500i,600,600i,700,700i|Poppins:300,300i,400,400i,500,500i,600,600i,700,700i" rel="stylesheet">
     <link href="https://fonts.googleapis.com/css?family=Lato:300,400,700&display=swap" rel="stylesheet">
 
 
@@ -32,6 +30,7 @@
 
     <!-- Template Main CSS File -->
     <link href="../View/assets/css/style.css" rel="stylesheet">
+    
 
     <!-- =======================================================
   * Template Name: Green - v4.8.0
@@ -89,17 +88,16 @@
                         </a>
                         <ul>
                             <?php
-                            if (isset($_SESSION['id']) && get_user_by_id($_SESSION['id'])['Role'] == 0):
+                            if (isset($_SESSION['id']) && get_user_by_id($_SESSION['id'])['Role'] == 0) :
                             ?>
-                            <li><a href="index.php?act=registe-medical">Đăng ký khám bệnh</a></li>
-                            <li><a href="#">Kết quả xét nghiệm</a></li>
-                            <li><a href="index.php?act=result-medical">Kết quả khám bệnh</a></li>
-                            <li><a href="index.php?act=medical-ex-his">Lịch sử đăng ký khám bệnh</a></li>
+                                <li><a href="index.php?act=registe-medical">Đăng ký khám bệnh</a></li>
+                                <!-- <li><a href="#">Kết quả xét nghiệm</a></li> -->
+                                <li><a href="index.php?act=result-medical">Kết quả khám bệnh</a></li>
+                                <li><a href="index.php?act=medical-ex-his">Lịch sử đăng ký khám bệnh</a></li>
                             <?php
-                            else:
+                            else :
                                 echo "
                                 <li><a href='index.php?act=login'>Đăng ký khám bệnh</a></li>
-                                <li><a href='#'>Kết quả xét nghiệm</a></li>
                                 <li><a href='index.php?act=login'>Kết quả khám bệnh</a></li>
                                 <li><a href='index.php?act=login'>Lịch sử đăng ký khám bệnh</a></li>
                                 ";
@@ -142,27 +140,26 @@
                         </ul>
                     </li> -->
                     <?php
-                        if(isset($_SESSION['id']) && get_user_by_id($_SESSION['id'])['Role'] == 0):
+                    if (isset($_SESSION['id']) && get_user_by_id($_SESSION['id'])['Role'] == 0) :
                     ?>
-                    <li class="nav-item me-3 me-lg-0 dropdown">
-                        <a class="nav-link dropdown-toggle" href="index.php?act=personal-information"
-                            id="navbarDropdown" role="button" data-mdb-toggle="dropdown" aria-expanded="false">
-                            <ion-icon class='logo' name="person-circle-outline"></ion-icon>
-                        </a>
-                        <ul class="dropdown-menu" aria-labelledby="navbarDropdown">
-                            <li><a class="dropdown-item" href="index.php?act=personal-information">My profile</a></li>
-                            <li><a class="dropdown-item" href="index.php?act=logout">Log out</a></li>
-                        </ul>
-                        <?php 
-                        else:
-                            echo"
+                        <li class="nav-item me-3 me-lg-0 dropdown">
+                            <a class="nav-link dropdown-toggle" href="index.php?act=personal-information" id="navbarDropdown" role="button" data-mdb-toggle="dropdown" aria-expanded="false">
+                                <ion-icon class='logo' name="person-circle-outline"></ion-icon>
+                            </a>
+                            <ul class="dropdown-menu" aria-labelledby="navbarDropdown">
+                                <li><a class="dropdown-item" href="index.php?act=personal-information">My profile</a></li>
+                                <li><a class="dropdown-item" href="index.php?act=logout">Log out</a></li>
+                            </ul>
+                        <?php
+                    else :
+                        echo "
                             <li>
                                 <a href='index.php?act=login'>
                                     <ion-icon class='logo' name='log-in-outline'></ion-icon>
                                 </a>";
-                            endif;
+                    endif;
                         ?>
-                    </li>
+                        </li>
                 </ul>
                 <i class="bi bi-list mobile-nav-toggle"></i>
             </nav><!-- .navbar -->

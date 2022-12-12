@@ -162,7 +162,9 @@
 
         ?>
     </table>
+    <div class="d-sm-flex align-items-center justify-content-between mb-4">
     <?php
-    echo '<a href="index.php?act=print-medical-records&id=' . $idRequest . '" class="font-weight-bold text-info">In đơn thuốc</a>'
+    echo'<a href="index.php?act=print-medical-records&id=' . $idRequest . '" class="d-none d-sm-inline-block btn btn-sm btn-success shadow-sm"><i class="fas fa-download fa-sm text-white-50"></i> In đơn thuốc</a>'
     ?>
+    </div>
 </div>

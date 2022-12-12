@@ -1,6 +1,6 @@
 <?php
-function add_medical_record($chandoan, $ketluan, $luuy, $id_user){
-    $sql = "INSERT INTO `hosobenhnhan`(`ChanDoan`, `KetLuan`, `LuuY`, `MaTaiKhoan`) VALUES ('$chandoan','$ketluan','$luuy','$id_user')";
+function add_medical_record($chandoan, $ketluan, $luuy, $id_examination_schedule, $id_user){
+    $sql = "INSERT INTO `hosobenhnhan`(`ChanDoan`, `KetLuan`, `LuuY`, `ID_LichKham`, `MaTaiKhoan`) VALUES ('$chandoan','$ketluan','$luuy', $id_examination_schedule, $id_user);";
     return addsql($sql);
 }
 
@@ -20,5 +20,10 @@ function get_medical_record($mahoso) {
 
 function get_users_by_medical_record($mahoso){
     $sql = "SELECT * FROM `taikhoan` JOIN `hosobenhnhan` ON taikhoan.MaTaiKhoan = hosobenhnhan.MaTaiKhoan WHERE hosobenhnhan.MaHoSo = $mahoso;";
+    return getone($sql);
+}
+
+function get_medical_record_by_calendar($id_lich) {
+    $sql = "SELECT * FROM `hosobenhnhan` WHERE `ID_LichKham` = $id_lich";
     return getone($sql);
 }

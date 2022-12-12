@@ -20,6 +20,7 @@
             <th scope="col">Kết luận</th>
             <th scope="col">Lưu ý</th>
             <th scope="col" class="text-center">Thêm đơn thuốc</th>
+            <th scope="col" class="text-center">Phiếu xét nghiệm</th>
             <th scope="col" class="text-center">Cập nhật</th>
           </tr>
         </thead>
@@ -37,7 +38,8 @@
                       <td scope='row'>" . $medical['ChanDoan'] . "</td>
                       <td scope='row'>" . $medical['KetLuan'] . "</td>
                       <td scope='row'>" . $medical['LuuY'] . "
-                      <td class='text-center'><a href='index.php?act=add-prescriptions&id=" . $medical['MaHoSo'] . "'><i class='fa fa-eye text-dark'></i></a></td>
+                      <td class='text-center'><a href='index.php?act=add-prescriptions&id=" . $medical['MaHoSo'] . "'><i class='fas fa-duotone fa-pen'></i></a></td>
+                      <td class='text-center'><a href='index.php?act=create-test-sheet&id=".$medical['MaHoSo']."'><i class='fas fa-duotone fa-pen'></i></a></td>
                       <td class='col-1 text-center'><a href='index.php?act=update-medical-record&id=" . $medical['MaHoSo'] . "'><i class='fas fa-pen-square text-success'></i></a></td>";
             echo "</tr>
                   </tbody>";

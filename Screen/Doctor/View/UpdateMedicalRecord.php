@@ -4,7 +4,7 @@
     <!-- Title Content Row-->
     <div class="row">
         <div class="col-12 mb-4 text-center">
-            <h2 class="font-weight-bold text-info text-uppercase">Cập nhật thông tin bệnh nhân</h2>
+            <h2 class="font-weight-bold text-info text-uppercase">Cập nhật bệnh án</h2>
         </div>
     </div>
     <!-- Content Row -->

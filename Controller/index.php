@@ -9,7 +9,7 @@ if (isset($_GET['act'])) {
     $act = $_GET["act"];
     switch ($act) {
 
-        // login
+            // login
         case 'login':
             if (isset($_POST['login']) && ($_POST['login'])) {
                 $user = $_POST["user"];
@@ -47,7 +47,7 @@ if (isset($_GET['act'])) {
             include "../View/components/Login.php";
             break;
 
-        // Register
+            // Register
         case "register":
             if (isset($_POST['register']) && ($_POST['register'])) {
                 $user = $_POST['user'];
@@ -111,13 +111,13 @@ if (isset($_GET['act'])) {
             include "../view/components/Register.php";
             break;
 
-        // Personal Information <thong tin ca nhan>
+            // Personal Information <thong tin ca nhan>
         case 'personal-information':
             $user = get_user_by_id($_SESSION['id']);
             include "../View/components/PersonalInformation.php";
             break;
 
-        //cap nhat thong tin ca nhan
+            //cap nhat thong tin ca nhan
         case 'updatePerIf':
             // lấy thông tin user
             $user = get_user_by_id($_SESSION['id']);
@@ -139,37 +139,37 @@ if (isset($_GET['act'])) {
                 $new_name = $_POST['name'];
                 $new_cmnd = $_POST['cmnd'];
                 // update thông tin user
-                if(!preg_match("/^[a-zA-ZÀÁÂÃÈÉÊÌÍÒÓÔÕÙÚĂĐĨŨƠàáâãèéêìíòóôõùúăđĩũơƯĂẠẢẤẦẨẪẬẮẰẲẴẶẸẺẼỀỀỂưăạảấầẩẫậắằẳẵặẹẻẽềềểỄỆỈỊỌỎỐỒỔỖỘỚỜỞỠỢỤỦỨỪễệỉịọỏốồổỗộớờởỡợụủứừỬỮỰỲỴÝỶỸửữựỳỵỷỹ\s]{1,}$/",$new_name)){
+                if (!preg_match("/^[a-zA-ZÀÁÂÃÈÉÊÌÍÒÓÔÕÙÚĂĐĨŨƠàáâãèéêìíòóôõùúăđĩũơƯĂẠẢẤẦẨẪẬẮẰẲẴẶẸẺẼỀỀỂưăạảấầẩẫậắằẳẵặẹẻẽềềểỄỆỈỊỌỎỐỒỔỖỘỚỜỞỠỢỤỦỨỪễệỉịọỏốồổỗộớờởỡợụủứừỬỮỰỲỴÝỶỸửữựỳỵỷỹ\s]{1,}$/", $new_name)) {
                     echo "<script>alert('Nhập sai tên')</script>";
                     echo header('refresh:0');
                     break;
                 }
-                if(!preg_match("/^[0][3|7|9][0-9]{8}$/",$new_phone)){
+                if (!preg_match("/^[0][3|7|9][0-9]{8}$/", $new_phone)) {
                     echo "<script>alert('Nhập sai số điện thoại')</script>";
                     echo header('refresh:0');
                     break;
                 }
-                if(!preg_match("/^[0-9]{9}$/",$new_cmnd)){
+                if (!preg_match("/^[0-9]{9}$/", $new_cmnd)) {
                     echo "<script>alert('Nhập sai cmnd')</script>";
                     echo header('refresh:0');
                     break;
                 }
-                if(!preg_match("/^[a-zA-Z0-9]{0,50}[@][a-z]{3,7}[.][a-z]{3}$/",$new_email)){
+                if (!preg_match("/^[a-zA-Z0-9]{0,50}[@][a-z]{3,7}[.][a-z]{3}$/", $new_email)) {
                     echo "<script>alert('Nhập sai email')</script>";
                     echo header('refresh:0');
                     break;
                 }
-                if(!preg_match("/^[0-9\/]{1,}[0-9A-Za-z.ÀÁÂÃÈÉÊÌÍÒÓÔÕÙÚĂĐĨŨƠàáâãèéêìíòóôõùúăđĩũơƯĂẠẢẤẦẨẪẬẮẰẲẴẶẸẺẼỀỀỂưăạảấầẩẫậắằẳẵặẹẻẽềềểỄỆỈỊỌỎỐỒỔỖỘỚỜỞỠỢỤỦỨỪễệỉịọỏốồổỗộớờởỡợụủứừỬỮỰỲỴÝỶỸửữựỳỵỷỹ\s,]{2,}$/",$new_address)){
+                if (!preg_match("/^[0-9\/]{1,}[0-9A-Za-z.ÀÁÂÃÈÉÊÌÍÒÓÔÕÙÚĂĐĨŨƠàáâãèéêìíòóôõùúăđĩũơƯĂẠẢẤẦẨẪẬẮẰẲẴẶẸẺẼỀỀỂưăạảấầẩẫậắằẳẵặẹẻẽềềểỄỆỈỊỌỎỐỒỔỖỘỚỜỞỠỢỤỦỨỪễệỉịọỏốồổỗộớờởỡợụủứừỬỮỰỲỴÝỶỸửữựỳỵỷỹ\s,]{2,}$/", $new_address)) {
                     echo "<script>alert('Nhập sai địa chỉ')</script>";
                     echo header('refresh:0');
                     break;
                 }
-                $date=getdate();
+                $date = getdate();
                 $day = $date['mday'];
                 $month = $date['mon'];
                 $year = $date['year'];
-                $time="$year-$month-$day";
-                if(strtotime($new_date)>strtotime($time)){
+                $time = "$year-$month-$day";
+                if (strtotime($new_date) > strtotime($time)) {
                     echo "<script>alert('Nhập sai ngày')</script>";
                     echo header('refresh:0');
                     break;
@@ -181,14 +181,14 @@ if (isset($_GET['act'])) {
                     echo "<script>alert('Cập nhật thông tin thành công')</script>";
                     header('refresh:0; url ="index.php?act=edit_user"');
                 } else {
-                    
+
                     include "../View/components/UpdatePersonalInformation.php";
                 }
             }
             include "../View/components/UpdatePersonalInformation.php";
             break;
 
-        // For Customers:
+            // For Customers:
         case 'registe-medical':
             $RegisteMedicalExamination = get_specialty();
             if (isset($_POST['btnAdd'])) {
@@ -205,19 +205,31 @@ if (isset($_GET['act'])) {
             include "../View/components/RegisteMedicalExamination.php";
             break;
 
-        // result medical
+            // result medical
         case 'result-medical':
-            $user = get_user_by_id($_SESSION['id']);
+            $user = $_SESSION['id'];
+            $patient = get_medical_exam($user);
             include "../View/components/ResultMedicalExamination.php";
             break;
 
+            // see result
+        case 'see-results':
+            $idRequest = $_GET['id'];
+            $id_calendar= $_GET['id-lich'];
+            $username_doctor= get_by_calendar($id_calendar);
+            $print_prescript = print_prescript($idRequest);
+            $user = get_users_by_medical_record($idRequest);
+            include "../View/components/SeeResult.php";
+            break;
+
+            // medical his
         case 'medical-ex-his':
             $user = $_SESSION['id'];
             $patient = get_calendar_patient($user);
             include "../View/components/MedicalExaminationHistory.php";
             break;
 
-        // Logout
+            // Logout
         case 'logout':
             if (isset($_SESSION['id'])) unset($_SESSION['id']);
             if (isset($_SESSION['user'])) unset($_SESSION['user']);
@@ -238,4 +250,3 @@ if (isset($_GET['act'])) {
     include "../View/components/Home.php";
 }
 include "../View/components/Footer.php";
-?>
